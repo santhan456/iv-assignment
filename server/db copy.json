@@ -17,8 +17,8 @@
       "product": "B1",
       "quantity": 500,
       "amountBal": 1024.12,
-      "invoiceDate": "03/31/2020",
-      "amountDue": 0
+      "amountDue": 512.5,
+      "invoiceDate": "03/31/2020"
     },
     {
       "id": 3,
@@ -63,86 +63,86 @@
   ],
   "vendors": [
     {
-      "vendorName": "Delmonte",
+      "id":1,
       "vendorId": "D1",
-      "id": 1,
-      "creditBal": 87.5
+      "vendorName": "Delmonte",
+      "creditBal": 600
     },
     {
-      "id": 2,
+      "id":2,
       "vendorId": "T1",
       "vednorName": "Target"
     },
     {
-      "id": 3,
+      "id":3,
       "vendorId": "W1",
       "vendorName": "Walmart",
       "creditBal": 12.25
     },
     {
-      "id": 4,
+      "id":4,
       "vendorId": "G1",
       "vendorName": "Global fruits",
       "creditBal": 0
     }
   ],
   "config": {
-    "tableConfig": {
+    "tableConfig":{
       "paymentEnabled": false,
-      "adjustEnabled": true,
-      "columns": [
+      "adjustEnabled" : true,
+      "columns":[
         {
           "fieldName": "product",
-          "displayName": "Product",
-          "display": true,
-          "filteringEnabled": false,
-          "sortingEnabled": true
+          "displayName" : "Product",
+          "display" : true,
+          "filteringEnabled" : false,
+          "sortingEnabled" : true
         },
         {
           "fieldName": "quantity",
-          "displayName": "Quantity",
-          "display": true,
-          "filteringEnabled": false,
-          "sortingEnabled": true
+          "displayName" : "Quantity",
+          "display" : true,
+          "filteringEnabled" : false,
+          "sortingEnabled" : true
         },
         {
           "fieldName": "invoiceId",
-          "displayName": "Invoice ID",
-          "display": true,
-          "filteringEnabled": false,
-          "sortingEnabled": true
+          "displayName" : "Invoice ID",
+          "display" : true,
+          "filteringEnabled" : false,
+          "sortingEnabled" : true
         },
         {
           "fieldName": "vendorName",
-          "displayName": "Vendor",
-          "display": true,
-          "filteringEnabled": false,
-          "sortingEnabled": true
+          "displayName" : "Vendor",
+          "display" : true,
+          "filteringEnabled" : false,
+          "sortingEnabled" : true
         },
         {
           "fieldName": "creditBal",
-          "displayName": "Credit Balance",
-          "display": true,
-          "filteringEnabled": false,
-          "sortingEnabled": true
+          "displayName" : "Credit Balance",
+          "display" : true,
+          "filteringEnabled" : false,
+          "sortingEnabled" : true
         },
         {
           "fieldName": "amountDue",
-          "displayName": "Due",
-          "display": true,
-          "filteringEnabled": false,
-          "sortingEnabled": true
+          "displayName" : "Due",
+          "display" : true,
+          "filteringEnabled" : false,
+          "sortingEnabled" : true
         },
         {
-          "displayName": "Actions",
-          "display": true,
-          "filteringEnabled": false,
-          "sortingEnabled": true,
+          "displayName" : "Actions",
+          "display" : true,
+          "filteringEnabled" : false,
+          "sortingEnabled" : true,
           "type": "Pay"
         }
       ]
     },
-    "apis": {
+    "apis":{
       "invoiceUrl": "http://localhost:3001/invoices",
       "vendorUrl": "http://localhost:3001/vendors",
       "creditUrl": "",
