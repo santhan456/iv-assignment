@@ -11,9 +11,9 @@ export function processData(vendors, invoices){
         if(!vendor || (vendor && !vendor[0])){
             return null;
         }
-        const {vendorName, creditBal} = vendor[0];
+        const {vendorName, creditBal, id, vendorId} = vendor[0];
         return {
-            ...invoice, vendorName, creditBal
+            ...invoice, vendorName, creditBal, vendorUId: id, vendorId
         }
     });
     return compact(mergedData);

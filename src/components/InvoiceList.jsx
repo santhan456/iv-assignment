@@ -8,6 +8,7 @@ import { ModalFactory } from "./ModalFactory";
 import { getTableConfig } from "../store/config/configSelectors";
 import {useDispatch} from "react-redux";
 import { UPDATE_INVOICE_ASYNC_STARTED } from "../store/invoices/invoiceActions";
+import { UPDATE_VENDOR_ASYNC_STARTED } from "../store/vendors/vendorActions";
 
 export function InvoiceList(props){
     const {invoices, vendors} = props;
@@ -23,7 +24,24 @@ export function InvoiceList(props){
     const [modalOptions, setModalOptions] = React.useState({});
 
     function okAction(record){
-        dispatch({type: UPDATE_INVOICE_ASYNC_STARTED, data: {...record}});
+        const {id, 
+            invoiceId, 
+            vendorId, vendorName, 
+            product, 
+            quantity, 
+            amountBal, 
+            invoiceDate, 
+            creditBal, 
+            amountDue, 
+            vendorUId} = record;
+        dispatch({
+            type: UPDATE_INVOICE_ASYNC_STARTED, 
+            data: {id, invoiceId, vendorId, product, quantity, amountBal, invoiceDate, amountDue: 0}
+        });
+        dispatch({
+            type: UPDATE_VENDOR_ASYNC_STARTED,
+            data: { vendorName, vendorId, id: vendorUId, creditBal: creditBal - amountDue}
+        });
         setModalOptions({
            ...modalOptions,
            isVisible: false 

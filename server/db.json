@@ -17,10 +17,8 @@
       "product": "B1",
       "quantity": 500,
       "amountBal": 1024.12,
-      "amountDue": 512.5,
       "invoiceDate": "03/31/2020",
-      "vendorName": "Delmonte",
-      "creditBal": 600
+      "amountDue": 0
     },
     {
       "id": 3,
@@ -65,10 +63,10 @@
   ],
   "vendors": [
     {
-      "id": 1,
-      "vendorId": "D1",
       "vendorName": "Delmonte",
-      "creditBal": 600
+      "vendorId": "D1",
+      "id": 1,
+      "creditBal": 87.5
     },
     {
       "id": 2,
