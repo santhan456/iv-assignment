@@ -4,19 +4,74 @@ import {buildColumns, processData} from "./ComponentHelper";
 import { useSelector } from "react-redux";
 import { isVendorsCallInProgress } from "../store/vendors/vendorSelectors";
 import { isInvoiceCallInProgress } from "../store/invoices/invoiceSelectors";
+import { ModalFactory } from "./ModalFactory";
+import { getTableConfig } from "../store/config/configSelectors";
+import {useDispatch} from "react-redux";
+import { UPDATE_INVOICE_ASYNC_STARTED } from "../store/invoices/invoiceActions";
 
 export function InvoiceList(props){
-    const {invoices, vendors, config} = props;
+    const {invoices, vendors} = props;
 
+    const dispatch = useDispatch();
+    
     const isFetchingVendors = useSelector(isVendorsCallInProgress);
     const isFetchingInvoices = useSelector(isInvoiceCallInProgress);
-
     const isLoading = isFetchingVendors || isFetchingInvoices;
 
-    const columns = buildColumns(config);
-    const data = processData(vendors, invoices);
-    console.log({columns, data});
+    const tableConfig = useSelector(getTableConfig);
+    
+    const [modalOptions, setModalOptions] = React.useState({});
 
-    return <Table columns={columns} dataSource={data} pagination={false} loading={isLoading}/>;
+    function okAction(record){
+        dispatch({type: UPDATE_INVOICE_ASYNC_STARTED, data: {...record}});
+        setModalOptions({
+           ...modalOptions,
+           isVisible: false 
+        })
+    }
+
+    const cancelAction = () => {
+        setModalOptions({
+            isVisible: false  
+        });
+    }
+
+    const payClick = (record) => {
+        if(record.creditBal >= record.amountDue){
+            setModalOptions({
+                type:"CreditPay",
+                isVisible: true,
+                okAction: okAction,
+                cancelAction,
+                message: "Do you want to apply available credit for bill payment?",
+                record
+            });
+        }
+    };
+
+    const bingConfigWithActions = () => {
+        const newColumns =  tableConfig?.columns.map((column) => {
+            switch(column.type){
+                case "Pay":{
+                    return {
+                        ...column, actions: { payClick }
+                    }
+                }
+                default:{
+                    return {...column};
+                }
+            }
+        });
+        return {...tableConfig, columns:newColumns};       
+    }
+
+    const modifiedConfig = bingConfigWithActions();
+    const columns = buildColumns(modifiedConfig);
+    const data = processData(vendors, invoices);
+    
+    return <>
+        <Table columns={columns} dataSource={data} pagination={false} loading={isLoading}/>
+        <ModalFactory  {...modalOptions} />
+    </>;
 }
 

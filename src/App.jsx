@@ -7,6 +7,7 @@ function App() {
   return (
     <div className="App">
       <InvoicePage/>
+      <div id="modal-container"></div>
     </div>
   );
 }

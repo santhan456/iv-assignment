@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Tag, Space } from 'antd';
+import {ActionFactory} from "./ActionFactory";
 
 export function processData(vendors, invoices){
     if(!vendors || !invoices){
@@ -21,14 +21,17 @@ export function processData(vendors, invoices){
 
 function compact(arr){
     const invalidValues = [null, undefined];
-    return arr.filter(item => invalidValues.indexOf(item) === -1)
+    return arr.filter(item => invalidValues.indexOf(item) === -1);
 }
 
-export function buildColumns(config){
-    return config.tableConfig?.columns.map((column) => {
+export function buildColumns(tableConfig){
+    return tableConfig?.columns.map((column) => {
       return {
         title: column.displayName,
-        dataIndex: column.fieldName
+        dataIndex: column.fieldName, 
+        render: (text, record) => (
+            <ActionFactory type={column.type} text={text} record={record} actions={column.actions} />
+          ),
       }
     });
 }
