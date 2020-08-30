@@ -5,3 +5,7 @@ export function getInvoices(state){
 export function isInvoiceCallInProgress(state){
    return state.invoices.isCallInProgress;
 }
+
+export function isInvoiceCallFailed(state){
+    return !!state.invoices.error;
+}

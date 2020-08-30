@@ -1,24 +1,26 @@
 
-export const CONFIG_CALL_START = "CONFIG_CALL_START";
-export const CONFIG_CALL_SUCCESS = "CONFIG_CALL_SUCCESS";
-export const CONFIG_CALL_FAIL = "CONFIG_CALL_FAIL";
+export const FETCH_CONFIG_STARTED = "FETCH_CONFIG_STARTED";
+export const FETCH_CONFIG_SUCCEEDED = "FETCH_CONFIG_SUCCEEDED";
+export const FETCH_CONFIG_FAILED = "FETCH_CONFIG_FAILED";
 
-export function initConfigCall(){
+export const FETCH_CONFIG_ASYNC_STARTED = "FETCH_CONFIG_ASYNC_STARTED";
+
+export function configFetchRequested(){
     return {
-        type : CONFIG_CALL_START
+        type : FETCH_CONFIG_STARTED
     }
 }
 
-export function updateConfigAfterSuccess(config){
+export function configFetchSucceded(config){
     return {
-        type: CONFIG_CALL_SUCCESS,
+        type: FETCH_CONFIG_SUCCEEDED,
         config
     }
 }
 
-export function updateConfigAfterFailure(error){
+export function configFetchFailed(error){
     return {
-        type: CONFIG_CALL_FAIL,
+        type: FETCH_CONFIG_FAILED,
         error: JSON.stringify(error)
     }
 }

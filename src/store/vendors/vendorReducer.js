@@ -1,36 +1,23 @@
 
+import {FETCH_VENDOR_FAILED, FETCH_VENDOR_SUCCEEDED, FETCH_VENDOR_STARTED} from "./vendorActions";
+
 const defaultState = {
-    items: [
-        {
-          "id":1,
-          "vendorId": "D1",
-          "vendorName": "Delmonte",
-          "creditBal": 600
-        },
-        {
-          "id":2,
-          "vendorId": "T1",
-          "vednorName": "Target"
-        },
-        {
-          "id":3,
-          "vendorId": "W1",
-          "vendorName": "Walmart",
-          "creditBal": 12.25
-        },
-        {
-          "id":4,
-          "vendorId": "G1",
-          "vendorName": "Global Fruits",
-          "creditBal": 0
-        }
-      ],
+    items: null,
     isCallInProgress: false,
     error: null
 };
 
 export function vendorReducer(state = defaultState, action){
     switch(action.type){
+        case FETCH_VENDOR_STARTED:{
+          return {...state, isCallInProgress: true};
+        };
+        case FETCH_VENDOR_SUCCEEDED:{
+          return {...state, items: [...action.data],  isCallInProgress: false}
+        };
+        case FETCH_VENDOR_FAILED:{
+          return {...state, error: action.error}
+        }
         default:
             return {...state};
     }

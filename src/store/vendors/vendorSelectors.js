@@ -5,3 +5,7 @@ export function getVendors(state){
 export function isVendorsCallInProgress(state){
     return state.invoices.isCallInProgress;
 }
+
+export function isVendorCallFailed(state){
+    return !!state.vendors.error;
+}

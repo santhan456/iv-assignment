@@ -1,18 +1,22 @@
 import * as React from "react";
-import {getVendors} from "../../store/vendors/vendorSelectors";
-import {useSelector} from "react-redux";
+import {getVendors, isVendorCallFailed} from "../../store/vendors/vendorSelectors";
+import {FETCH_VENDOR_ASYNC_STARTED} from "../../store/vendors/vendorActions";
+import {useSelector, useDispatch} from "react-redux";
 
 export function withVendorsList(Component){
     return function (componentProps){
 
         const hasConfig = componentProps.config;  
         const vendors = useSelector(getVendors);
+        const hasError = useSelector(isVendorCallFailed)
+
+        const dispatch = useDispatch();
 
         React.useEffect(()=>{
-            if(hasConfig){
-                // dispatch action here
+            if(hasConfig && !vendors && !hasError){
+                dispatch({type: FETCH_VENDOR_ASYNC_STARTED})
             }
-        }, [hasConfig]);
+        }, [hasConfig, vendors]);
 
         const propsFromHoc = {
             vendors

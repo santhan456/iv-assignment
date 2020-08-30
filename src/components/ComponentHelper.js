@@ -2,6 +2,10 @@ import * as React from "react";
 import { Tag, Space } from 'antd';
 
 export function processData(vendors, invoices){
+    if(!vendors || !invoices){
+        return null;
+    }
+    
     const mergedData =  invoices.map(invoice => {
         const vendor = vendors.filter(vendor => vendor.vendorId === invoice.vendorId);
         if(!vendor || (vendor && !vendor[0])){
@@ -21,10 +25,10 @@ function compact(arr){
 }
 
 export function buildColumns(config){
-    return config.tableConfig.columns.map((column) => {
+    return config.tableConfig?.columns.map((column) => {
       return {
         title: column.displayName,
-        dataIndex: column.fieldName,
+        dataIndex: column.fieldName
       }
     });
 }
