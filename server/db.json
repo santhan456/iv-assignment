@@ -13,7 +13,7 @@
     {
       "id": 2,
       "invoiceId": 4578,
-      "vendorId": "Delmonte",
+      "vendorId": "D1",
       "product": "B1",
       "quantity": 500,
       "amountBal": 1024.12,
@@ -52,7 +52,7 @@
     },
     {
       "invoiceId": 1025,
-      "vendorId": "Wasdasd1",
+      "vendorId": "W1",
       "quantity": 1000,
       "Product": "Napkin",
       "amountBal": 0,

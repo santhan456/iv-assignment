@@ -8,9 +8,44 @@ const defaultState = {
           "adjustEnabled" : true,
           "columns":[
             {
-              "fieldName": "vendorId",
-              "displayName" : "Vendor ID",
-              "display" : false,
+              "fieldName": "product",
+              "displayName" : "Product",
+              "display" : true,
+              "filteringEnabled" : false,
+              "sortingEnabled" : true,
+            },
+            {
+              "fieldName": "quantity",
+              "displayName" : "Quantity",
+              "display" : true,
+              "filteringEnabled" : false,
+              "sortingEnabled" : true
+            },
+            {
+              "fieldName": "invoiceId",
+              "displayName" : "Invoice ID",
+              "display" : true,
+              "filteringEnabled" : false,
+              "sortingEnabled" : true
+            },
+            {
+              "fieldName": "vendorName",
+              "displayName" : "Vendor",
+              "display" : true,
+              "filteringEnabled" : false,
+              "sortingEnabled" : true
+            },
+            {
+              "fieldName": "amountBal",
+              "displayName" : "Balance",
+              "display" : true,
+              "filteringEnabled" : false,
+              "sortingEnabled" : true
+            },
+            {
+              "fieldName": "amountDue",
+              "displayName" : "Due",
+              "display" : true,
               "filteringEnabled" : false,
               "sortingEnabled" : true
             }

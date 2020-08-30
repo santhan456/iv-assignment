@@ -21,6 +21,7 @@ const defaultState = {
         {
           "id":4,
           "vendorId": "G1",
+          "vendorName": "Global Fruits",
           "creditBal": 0
         }
       ],

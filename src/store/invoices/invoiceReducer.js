@@ -15,7 +15,7 @@ const defaultState = {
         {
           "id": 2,
           "invoiceId": 4578,
-          "vendorId": "Delmonte",
+          "vendorId": "D1",
           "product": "B1",
           "quantity": 500,
           "amountBal": 1024.12,
@@ -27,7 +27,7 @@ const defaultState = {
           "invoiceId": 9999,
           "vendorId": "W1",
           "quantity": 1000,
-          "Product": "Napkin",
+          "product": "Napkin",
           "amountBal": 12.25,
           "amountDue": 12.25,
           "invoiceDate": "03/31/2020"
@@ -37,7 +37,7 @@ const defaultState = {
           "invoiceId": 1000,
           "vendorId": "W1",
           "quantity": 25,
-          "Product": "Sanitizer",
+          "product": "Sanitizer",
           "amountBal": 25,
           "amountDue": 12.25,
           "invoiceDate": "03/31/2020"
@@ -47,7 +47,7 @@ const defaultState = {
           "invoiceId": 1025,
           "vendorId": "W1",
           "quantity": 1000,
-          "Product": "Napkin",
+          "product": "Napkin",
           "amountBal": 0,
           "amountDue": 0,
           "invoiceDate": "03/31/2020"
@@ -56,7 +56,7 @@ const defaultState = {
           "invoiceId": 1025,
           "vendorId": "Wasdasd1",
           "quantity": 1000,
-          "Product": "Napkin",
+          "product": "Napkin",
           "amountBal": 0,
           "amountDue": 0,
           "invoiceDate": "03/31/2020",
