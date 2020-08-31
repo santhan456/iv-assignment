@@ -34,13 +34,16 @@ export function InvoiceList(props){
             creditBal, 
             amountDue, 
             vendorUId} = record;
+
+        const updatedDue = creditBal >= amountDue ? 0 : amountDue - creditBal;
+        const updateCreditBal = creditBal >= amountDue ? creditBal - amountDue : 0;
         dispatch({
             type: UPDATE_INVOICE_ASYNC_STARTED, 
-            data: {id, invoiceId, vendorId, product, quantity, amountBal, invoiceDate, amountDue: 0}
+            data: {id, invoiceId, vendorId, product, quantity, amountBal, invoiceDate, amountDue: updatedDue}
         });
         dispatch({
             type: UPDATE_VENDOR_ASYNC_STARTED,
-            data: { vendorName, vendorId, id: vendorUId, creditBal: creditBal - amountDue}
+            data: { vendorName, vendorId, id: vendorUId, creditBal: updateCreditBal}
         });
         setModalOptions({
            ...modalOptions,
@@ -55,7 +58,7 @@ export function InvoiceList(props){
     }
 
     const payClick = (record) => {
-        if(record.creditBal >= record.amountDue){
+        if(record.creditBal > 0){
             setModalOptions({
                 type:"CreditPay",
                 isVisible: true,
