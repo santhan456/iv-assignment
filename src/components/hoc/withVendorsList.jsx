@@ -8,7 +8,7 @@ export function withVendorsList(Component){
 
         const hasConfig = componentProps.config;  
         const vendors = useSelector(getVendors);
-        const hasError = useSelector(isVendorCallFailed)
+        const hasError = useSelector(isVendorCallFailed);
 
         const dispatch = useDispatch();
 
@@ -16,7 +16,7 @@ export function withVendorsList(Component){
             if(hasConfig && !vendors && !hasError){
                 dispatch({type: FETCH_VENDOR_ASYNC_STARTED})
             }
-        }, [hasConfig, vendors]);
+        }, [hasConfig, vendors, dispatch, hasError]);
 
         const propsFromHoc = {
             vendors

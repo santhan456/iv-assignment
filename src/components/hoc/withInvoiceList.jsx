@@ -17,7 +17,7 @@ export function withInvoiceList(Component){
             if(hasConfig && !invoices && !hasError){
                 dispatch({type: FETCH_INVOICE_ASYNC_STARTED})
             }
-        }, [hasConfig, invoices]);
+        }, [hasConfig, invoices, hasError, dispatch]);
 
         const propsFromHoc = {
             invoices
